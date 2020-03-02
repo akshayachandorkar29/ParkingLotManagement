@@ -53,3 +53,11 @@ class ParkingLot:
             status = "VACANT"
         return status
 
+    # this function is for airport security to check whether parking slot is full
+    def airport_security_person_update(self):
+        update = self.get_status()
+        if update == "FULL":
+            redirect = True
+        else:
+            redirect = False
+        return redirect
