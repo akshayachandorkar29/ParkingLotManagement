@@ -35,3 +35,12 @@ class ParkingLot:
             return slot_id + 1
         else:
             return -1
+
+    def leave(self, slot_id):
+        if self.num_of_occupied_slots > 0 and self.slots[slot_id - 1] != -1:
+            self.slots[slot_id - 1] = -1
+            self.num_of_occupied_slots = self.num_of_occupied_slots - 1
+            return True
+        else:
+            return False
+
