@@ -36,6 +36,7 @@ class ParkingLot:
         else:
             return -1
 
+    # this will check if vehicle already there, if present, delete the slot
     def leave(self, slot_id):
         if self.num_of_occupied_slots > 0 and self.slots[slot_id - 1] != -1:
             self.slots[slot_id - 1] = -1
@@ -43,4 +44,12 @@ class ParkingLot:
             return True
         else:
             return False
+
+    # this will return status of the slots FULL or VACANT
+    def get_status(self):
+        if self.num_of_occupied_slots == self.capacity:
+            status = "FULL"
+        else:
+            status = "VACANT"
+        return status
 
