@@ -40,3 +40,8 @@ def test_get_status():
     assert parking.get_status() == "VACANT"
 
 
+# test case for redirecting security staff
+def test_airport_security_person_update():
+    assert parking.airport_security_person_update() == False
+
+
