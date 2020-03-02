@@ -5,7 +5,7 @@ Date: 02/03/2020
 
 import pytest
 from Vehicle import Car
-from ParkingLotManagement import ParkingLot
+from parking_lot_management import ParkingLot
 parking = ParkingLot()
 
 
@@ -28,4 +28,10 @@ def test_get_empty_slot_when_all_slots_are_empty():
 # test case for checking car has actually parked or not
 def test_park_the_car():
     assert parking.park(101, "red") == 1
+
+
+def test_leave_the_car():
+    assert parking.leave(1) == True
+
+
 
