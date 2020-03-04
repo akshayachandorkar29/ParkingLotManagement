@@ -172,6 +172,24 @@ class ParkingLot:
         return cars
 
 
+parking_object = ParkingLot()
+
+parking_object.create_parking_lot(100)
+parking_object.park("toyota", 101, "white", curr_time.hour)
+parking_object.park("indica", 102, "black", curr_time.hour)
+parking_object.park("toyota", 103, "red", curr_time.hour)
+parking_object.park("bmw", 104, "white", curr_time.hour)
+parking_object.park("toyota", 105, "blue", curr_time.hour)
+parking_object.leave(3)
+print(parking_object.get_all_cars())
+parking_object.park("toyota", 108, "white", curr_time.hour)
+print(parking_object.get_all_cars())
+print(parking_object.get_slot_no_from_color("white"))
+print(parking_object.get_slot_and_reg_no_given_name("toyota"))
+print(parking_object.get_slot_and_reg_no_given_name("bmw"))
+print(parking_object.get_reg_no_from_time(curr_time.hour))
+print(parking_object.get_all_cars())
+
 
 
 
