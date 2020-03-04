@@ -16,7 +16,6 @@ class ParkingLot:
         self.slot_id = 0
         self.num_of_occupied_slots = 0
 
-
     # this function will create an empty parking slot with defined capacity
     def create_parking_lot(self, capacity):
         self.slots = [-1] * capacity
@@ -30,10 +29,10 @@ class ParkingLot:
                 return i
 
     # this is the function to actually park the Car
-    def park(self, reg_no, color, current_time):
+    def park(self, name, reg_no, color, current_time):
         if self.num_of_occupied_slots < self.capacity:
             slot_id = self.get_empty_slot()
-            self.slots[slot_id] = Vehicle.Car(reg_no, color, current_time)
+            self.slots[slot_id] = Vehicle.Car(name, reg_no, color, current_time)
             self.slot_id = self.slot_id + 1
             self.num_of_occupied_slots = self.num_of_occupied_slots + 1
             return slot_id + 1
@@ -98,7 +97,7 @@ class ParkingLot:
             if self.slots[i] == -1:
                 continue
             if self.slots[i].color == color:
-                slot_nos.append(str(i + 1))
+                slot_nos.append(i + 1)
         return slot_nos
 
     # this function is for helping driver to find his car given color of the car
@@ -134,13 +133,46 @@ class ParkingLot:
                 time.append(i.current_time)  # append registration number to the list reg_no
         return time
 
+    # this function returns list of all slot numbers which have name as given name
+    def get_slot_no_from_name(self, name):
 
-a = ParkingLot()
-a.create_parking_lot(5)
-a.park(101, "white", curr_time.hour)
-a.park(102, "red", curr_time.hour)
-a.park(103, "white", curr_time.hour)
-b = a.search_car_given_color("white")
-print(b)
+        slot_no_name = []
+
+        for i in range(len(self.slots)):
+
+            if self.slots[i] == -1:
+                continue
+            if self.slots[i].name == name:
+                slot_no_name.append(i + 1)
+        return slot_no_name
+
+    # this function returns location and reg no given name of the car
+    def get_slot_and_reg_no_given_name(self, name):
+
+        details = []
+
+        for i in range(len(self.slots)):
+            inside = []
+            if self.slots[i] == -1:
+                continue
+            if self.slots[i].name == name:
+                inside.append(i+1)
+                inside.append(self.slots[i].reg_no)
+                details.append(inside)
+        return details
+
+    def get_all_cars(self):
+
+        cars = []
+        for i in self.slots:
+
+            if i == -1:
+                continue
+            cars.append(i.reg_no)  # append registration numbers of all the cars to the list cars
+        return cars
+
+
+
+
 
 
