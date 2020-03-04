@@ -14,7 +14,7 @@ parking = ParkingLot()
 
 # test case for getting type of the vehicle
 def test_get_type_of_vehicle():
-    car_vehicle = Car(1, "red", curr_time)
+    car_vehicle = Car("toyota", 1, "red", curr_time)
     assert car_vehicle.get_type() == "Car"
 
 
@@ -30,7 +30,7 @@ def test_get_empty_slot_when_all_slots_are_empty():
 
 # test case for checking car has actually parked or not
 def test_park_the_car():
-    assert parking.park(101, "red", curr_time) == 1
+    assert parking.park("toyota", 101, "red", curr_time) == 1
 
 
 # test case for un-parking the car
@@ -51,8 +51,8 @@ def test_airport_security_person_update():
 # test case for getting reg number given color
 def test_get_reg_no_from_color():
     parking.create_parking_lot(5)
-    parking.park(101, "white", curr_time)
-    parking.park(102, "red", curr_time)
+    parking.park("toyota", 101, "white", curr_time)
+    parking.park("toyota", 102, "red", curr_time)
     result = parking.get_reg_no_from_color("white")
     assert result == [101]
 
@@ -60,19 +60,22 @@ def test_get_reg_no_from_color():
 # test case for searching the car given color
 def test_search_car_given_color():
     parking.create_parking_lot(5)
-    parking.park(101, "white", curr_time)
-    parking.park(102, "red", curr_time)
+    parking.park("toyota", 101, "white", curr_time)
+    parking.park("toyota", 102, "red", curr_time)
     result = parking.search_car_given_color("white")
-    assert result == ['1']
+    assert result == [1]
 
 
 # test case for searching the car given reg no
 def test_search_car_given_reg_no():
     parking.create_parking_lot(5)
-    parking.park(101, "white", curr_time)
-    parking.park(102, "red", curr_time)
+    parking.park("toyota", 101, "white", curr_time)
+    parking.park("toyota", 102, "red", curr_time)
     result = parking.search_car_given_reg_no(101)
     assert result == 1
+
+
+
 
 
 
